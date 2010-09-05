@@ -476,7 +476,7 @@ class TaggedItem(models.Model):
     """
     tag          = models.ForeignKey(Tag, verbose_name=_('tag'), related_name='items')
     content_type = models.ForeignKey(ContentType, verbose_name=_('content type'))
-    object_id    = models.PositiveIntegerField(_('object id'), db_index=True)
+    object_id    = models.CharField(_('object id'), max_length=255, db_index=True)
     object       = generic.GenericForeignKey('content_type', 'object_id')
 
     objects = TaggedItemManager()
